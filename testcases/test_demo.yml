@@ -1,0 +1,35 @@
+- config:
+    name: testcase description
+    base_url: https://www.baidu.com
+    variables:
+        - token: ${get_login_token()}
+        - id: $id
+        - user: $user
+        - password: $password
+    setup_hooks:
+        - ${hook_print(setup)}
+    teardown_hooks:
+        - ${hook_print(teardown)}
+
+- test:
+    name: i am a demo
+    request:
+        headers:
+            Content-Type: application/json
+            User-Agent: Mozilla/5.0
+        method: GET
+        url: /123
+    validate:
+        - eq: [status_code, 200]
+    setup_hooks:
+        - ${hook_print(setup)}
+    teardown_hooks:
+        - ${hook_print(teardown)}
+    extract:
+        - postid: status_code
+
+- test:
+    name: i am a Tests demo
+    api: api_account_query($token, $id, $user, $password)
+    validate:
+        - eq: [status_code, 200]

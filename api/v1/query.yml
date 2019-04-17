@@ -1,0 +1,12 @@
+- api:
+    def: api_account_query($token, $id, $user, $password)
+    request:
+        url: /api/v1/Account/Login
+        method: GET
+        json:
+            token: $token
+            id: $id
+            user: $user
+            password: $password
+    validators:
+        - eq: ["status_code", 200]
