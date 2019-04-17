@@ -1,0 +1,9 @@
+config:
+    name: testsuite description
+
+testcases:
+    test_case_name:
+          testcase: testcases\test_demo.yml
+          parameters:
+              id: ["user1", "user2"]
+              user-password: ${P(testdata/user-password.csv)}
